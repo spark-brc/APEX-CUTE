@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ce55a660-b8b3-47ad-b5ef-c7ad6b98442a}</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>main_prog.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>
+    </WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>apex-cute</Name>
+    <RootNamespace>PythonApplication1</RootNamespace>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <InterpreterId>Global|VisualStudio|cute-env</InterpreterId>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="APEXACY.py" />
+    <Compile Include="APEXCONT.py" />
+    <Compile Include="APEXCROP.py" />
+    <Compile Include="APEXDWS.py" />
+    <Compile Include="apexLWE.py" />
+    <Compile Include="APEXSAD.py" />
+    <Compile Include="APEXFILE.py" />
+    <Compile Include="APEXOPSC.py" />
+    <Compile Include="APEXPARM.py" />
+    <Compile Include="APEXRCH.py" />
+    <Compile Include="APEXRUN.py" />
+    <Compile Include="APEXSITE.py" />
+    <Compile Include="APEXSOIL.py" />
+    <Compile Include="APEXSUBA.py" />
+    <Compile Include="data_pairing.py" />
+    <Compile Include="execute_apex.py" />
+    <Compile Include="File_toUpdate.py" />
+    <Compile Include="LWEOUT.py" />
+    <Compile Include="main_prog.py" />
+    <Compile Include="msgbox.py" />
+    <Compile Include="ObsData.py" />
+    <Compile Include="parm.py" />
+    <Compile Include="par_SA.py" />
+    <Compile Include="pcp.py" />
+    <Compile Include="apexPRINT.py" />
+    <Compile Include="QuliRun.py" />
+    <Compile Include="readobscrop.py" />
+    <Compile Include="readobsday.py" />
+    <Compile Include="readobsmonth.py" />
+    <Compile Include="readobsyear.py" />
+    <Compile Include="read_ddsout.py" />
+    <Compile Include="run_apexForSA.py" />
+    <Compile Include="SA_aggregate.py" />
+    <Compile Include="sa_util.py" />
+    <Compile Include="SensitivyRank.py" />
+    <Compile Include="statistics.py" />
+    <Compile Include="var_sample.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="CondaEnv|CondaEnv|cute-env" />
+    <InterpreterReference Include="Global|VisualStudio|cute-env" />
+  </ItemGroup>
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

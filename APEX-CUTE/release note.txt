@@ -1,0 +1,9 @@
+3/22/2022
+	1. Subarea ID input error (zero or nothing in columns 2-4) is fixed.
+	2. Crop yield aggregation error in APEXACY module is fixed.
+3/06/2018
+	1. The issue with reading in large RCH output is fixed.
+	
+5/18/2017
+	1. SA is evaluated only for "Evaluation period" or the overlapping period between "Evaluation period" and "Model simulation period".
+	2. Overall bugs fixed.

@@ -1,0 +1,84 @@
+A project is opened: 
+C:\APEX\APEX-CUTE\project1501\riesel.cproj
+
+APEX input files are copied to C:\APEX\APEX-CUTE\project1501\TxtInOut
+
+Calibration selected.
+
+The Outlets setting is saved ok.
+
+Calibration setting checked ok.
+APEX Parameters selected: 
+
+PARMs selected: 
+
+Crop Parameers selected: WA HI TOP TBS
+
+Constraints selected: 
+
+Total number of selected parameters: 4
+
+Current project is saved to: 
+C:\APEX\APEX-CUTE\project1501\riesel.cproj
+
+During auto-calibration, APEX will iterate 50 times.
+
+Ready to Run...
+
+Running DDS Calibraiton...
+
+Initiating DDS Run.... 
+
+
+
+APEX will iterate 50 times in this run.
+   1 / 50  Current:    61.53596  Best:    61.53596
+   2 / 50  Current:    64.26944  Best:    61.53596
+   3 / 50  Current:    61.99154  Best:    61.53596
+   4 / 50  Current:    63.09795  Best:    61.53596
+   5 / 50  Current:    62.87016  Best:    61.53596
+   6 / 50  Current:    60.55971  Best:    60.55971
+   7 / 50  Current:    60.10413  Best:    60.10413
+   8 / 50  Current:    59.77872  Best:    59.77872
+   9 / 50  Current:    62.05662  Best:    59.77872
+   10 / 50  Current:    61.95900  Best:    59.77872
+   11 / 50  Current:    57.43573  Best:    57.43573
+   12 / 50  Current:    55.67849  Best:    55.67849
+   13 / 50  Current:    57.63098  Best:    55.67849
+   14 / 50  Current:    57.27302  Best:    55.67849
+   15 / 50  Current:    55.80866  Best:    55.67849
+   16 / 50  Current:    55.09274  Best:    55.09274
+   17 / 50  Current:    54.24666  Best:    54.24666
+   18 / 50  Current:    54.05142  Best:    54.05142
+   19 / 50  Current:    58.31435  Best:    54.05142
+   20 / 50  Current:    54.31175  Best:    54.05142
+   21 / 50  Current:    54.01887  Best:    54.01887
+   22 / 50  Current:    54.47445  Best:    54.01887
+   23 / 50  Current:    57.07777  Best:    54.01887
+   24 / 50  Current:    55.22291  Best:    54.01887
+   25 / 50  Current:    55.67849  Best:    54.01887
+   26 / 50  Current:    54.31175  Best:    54.01887
+   27 / 50  Current:    53.17280  Best:    53.17280
+   28 / 50  Current:    54.08396  Best:    53.17280
+   29 / 50  Current:    53.79108  Best:    53.17280
+   30 / 50  Current:    53.82363  Best:    53.17280
+   31 / 50  Current:    54.21412  Best:    53.17280
+   32 / 50  Current:    52.78230  Best:    52.78230
+   33 / 50  Current:    52.81484  Best:    52.78230
+   34 / 50  Current:    52.74976  Best:    52.74976
+   35 / 50  Current:    53.46567  Best:    52.74976
+   36 / 50  Current:    52.81484  Best:    52.74976
+   37 / 50  Current:    54.57208  Best:    52.74976
+   38 / 50  Current:    52.91246  Best:    52.74976
+   39 / 50  Current:    58.11910  Best:    52.74976
+   40 / 50  Current:    52.97755  Best:    52.74976
+   41 / 50  Current:    52.97755  Best:    52.74976
+   42 / 50  Current:    52.87992  Best:    52.74976
+   43 / 50  Current:    52.84738  Best:    52.74976
+   44 / 50  Current:    52.94500  Best:    52.74976
+   45 / 50  Current:    52.78230  Best:    52.74976
+   46 / 50  Current:    53.04263  Best:    52.74976
+   47 / 50  Current:    53.10771  Best:    52.74976
+   48 / 50  Current:    52.68467  Best:    52.68467
+   49 / 50  Current:    54.76733  Best:    52.68467
+   50 / 50  Current:    53.33550  Best:    52.68467

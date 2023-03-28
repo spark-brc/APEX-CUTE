@@ -1,0 +1,9 @@
+<RCC/>
+  <qresource prefix="icons">
+    <file>add-file-48.ico</file>
+    <file>close-window-48.ico</file>
+    <file>folder-48.ico</file>
+    <file>save-48.ico</file>
+    <file>save-as-48.ico</file>
+  </qresource>
+</RCC>

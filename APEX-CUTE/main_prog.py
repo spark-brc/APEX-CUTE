@@ -1283,6 +1283,8 @@ def stop_run():
     parm.stop_run=1
     ui.messages.append(' '   + '\n')
     ui.messages.append('APEX iteration is stopped.'   + '\n')
+    ui.progressBar.setValue(0)
+    qApp.processEvents()
     msgbox.msg("Message", "APEX iteration is stopped..")
 
 def saveas_proj():

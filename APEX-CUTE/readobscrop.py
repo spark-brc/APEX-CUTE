@@ -43,7 +43,7 @@ def read_avg(i):
     icp = [0 for x in range(inum)] 
     sub = [0 for x in range(inum)] 
     iyld = [0 for x in range(inum)] 
-    ibiom = [0 for x in range(inum)] 
+    ocpd = [0 for x in range(inum)] 
 
     #read Crop names
     fcon = open(filename, 'r')
@@ -55,7 +55,7 @@ def read_avg(i):
             sub[lnum-2] = int(float(txtline[1]))
             icp[lnum-2] = txtline[2]
             iyld[lnum-2] = float(txtline[3])
-            ibiom[lnum-2] = float(txtline[4])
+            ocpd[lnum-2] = float(txtline[4])
 
     fcon.close()
 
@@ -63,8 +63,8 @@ def read_avg(i):
         if sub[j]==isub and icp[j].upper()==parm.apex_crop[i].upper():
             if parm.apex_var[i]==28:  #Grain yield,ton/ha/yr:
                 parm.obs_val[i] = iyld[j]
-            #elif parm.apex_var[i]==29: #Biomass yield,ton/ha/yr
-            #    parm.obs_val[i] = ibiom[j] 
+            elif parm.apex_var[i]==29: #SOC in plow depth, %
+                parm.obs_val[i] = ocpd[j] 
         
     parm.obs_date[i] = 9999
 
@@ -93,12 +93,22 @@ def read_timeseriese(i):
     icount = 0
     #annual crop yields from obs_crop.csv
     for j in range(inum):
-        if int(obsdata[j,1])==isub and icp[j].upper()==parm.apex_crop[i].upper():
-            iyr[icount] = datetime.date(int(obsdata[j,0]),1,1)
-            ival[icount] = float(obsdata[j,3])#Grain yield,ton/ha/yr
-            icount += 1
+        if int(obsdata[j,1])==isub:
+            if parm.apex_var[i]==28 and icp[j].upper()==parm.apex_crop[i].upper():  #Grain yield,ton/ha/yr:
+                iyr[icount] = datetime.date(int(obsdata[j,0]),1,1)
+                ival[icount] = float(obsdata[j,3])#Grain yield,ton/ha/yr
+                icount += 1
+            elif parm.apex_var[i]==29: #SOC in plow depth, %
+                if j==0:
+                    iyr[icount] = datetime.date(int(obsdata[j,0]),1,1)
+                    ival[icount] = float(obsdata[j,4]) #SOC in plow depth, %
+                    icount += 1
+                else:
+                    if not (int(obsdata[j,0])==int(obsdata[j-1,0]) and int(obsdata[j,1])==int(obsdata[j-1,1])):
+                        iyr[icount] = datetime.date(int(obsdata[j,0]),1,1)
+                        ival[icount] = float(obsdata[j,4]) #SOC in plow depth, %
+                        icount += 1
 
-                        
     parm.obs_date[i] = iyr[0:icount]
     parm.obs_val[i] = ival[0:icount]
 

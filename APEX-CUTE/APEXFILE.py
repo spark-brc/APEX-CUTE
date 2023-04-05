@@ -42,7 +42,10 @@ def read():
             parm.fnam_print = txtline[1]
 
         elif lnum == 19: #APEX LWE file
-            parm.fnam_lwe = txtline[1]
+            if len(txtline) < 2:
+                parm.fnam_lwe = ''
+            else:
+                parm.fnam_lwe = txtline[1]
 
     fcon.close()
 

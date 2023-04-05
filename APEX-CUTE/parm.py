@@ -191,4 +191,4 @@ si_total=[]
 dds_head=[]
 dds_data=[]
 error_msg=''
-
+stop_run=0

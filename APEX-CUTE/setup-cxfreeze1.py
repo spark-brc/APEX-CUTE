@@ -33,7 +33,7 @@ options ={
 setup(
     name='apex-cute.exe',
     options=options,
-    version='7.1',
+    version='7.8',
     description='APEX-CUTE',
     executables=[exe]
     )

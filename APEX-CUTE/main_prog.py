@@ -14,6 +14,14 @@ import matplotlib.pylab as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvas 
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
+
+# NOTE: uncertainty parrt -------------------------------------------------------@spark
+from ua.handler import uaInit
+from ua import handler
+
+#--------------------------------------------------------------------------------------
+
+
 parm.cute_rev = 'APEX-CUTE7.7'
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -112,6 +120,17 @@ class MyWindow(QtWidgets.QMainWindow):
         self.btn_log.clicked.connect(save_log_file) 
  
         self.tabWidget.currentChanged.connect(self.onChange)
+
+        # NOTE: uncertainty part
+        self.pushButton_setupUA.clicked.connect(UA_activate)
+        self.radioButton_dream.toggled.connect(obj_list)
+        self.radioButton_mcmc.toggled.connect(obj_list)
+        self.radioButton_sceua.toggled.connect(obj_list)
+
+
+
+
+
 
     #disable crop name in the Outlets tab if crop name is not needed for selected APEX output
     def crop_selected1(self,id):
@@ -2870,7 +2889,7 @@ def save_log_file():
      text=ui.messages.toPlainText()
      fnam = parm.path_proj + '\\log.txt'
      try:
-        with open(fnam, 'w') as f:
+        with open(fnam, 'w', encoding="utf8") as f:
             f.write(text)
         msgbox.msg('Done',fnam+' \n Saved successfully!')
      except:
@@ -2887,7 +2906,25 @@ def sigint_handler(*args):
                             QMessageBox.Yes | QMessageBox.No,
                             QMessageBox.No) == QMessageBox.Yes:
         QApplication.quit()
-        
+
+def UA_activate():
+    # handler.dream_activate()
+    ua_proj = uaInit(ui)
+    ua_proj.ua_worktree_setup()
+    ua_proj.export_parm_pars(ui)
+    ua_proj.all_pars(ui)
+    ua_proj.print_ua_intro(ui)
+
+def obj_list():
+    handler.obj_list(ui)
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)  # A new instance of QApplication

@@ -1,6 +1,7 @@
-<RCC/>
-  <qresource prefix="icons">
+<RCC>
+  <qresource prefix="newPrefix">
     <file>add-file-48.ico</file>
+    <file>ApexCUTE2.ico</file>
     <file>close-window-48.ico</file>
     <file>folder-48.ico</file>
     <file>save-48.ico</file>

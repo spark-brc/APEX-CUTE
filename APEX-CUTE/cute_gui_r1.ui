@@ -25,7 +25,7 @@
      <rect>
       <x>0</x>
       <y>-5</y>
-      <width>726</width>
+      <width>721</width>
       <height>486</height>
      </rect>
     </property>
@@ -50,7 +50,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -194,6 +194,7 @@
       <property name="font">
        <font>
         <italic>true</italic>
+        <kerning>false</kerning>
        </font>
       </property>
       <property name="title">
@@ -213,6 +214,7 @@
          <family>MS Shell Dlg 2</family>
          <pointsize>8</pointsize>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -235,6 +237,7 @@
         <font>
          <pointsize>8</pointsize>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -256,6 +259,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -277,6 +281,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -298,6 +303,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -319,6 +325,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -340,6 +347,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -361,6 +369,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -382,6 +391,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -403,6 +413,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -424,6 +435,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -445,6 +457,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -466,6 +479,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -487,6 +501,7 @@
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -526,6 +541,7 @@
         <weight>75</weight>
         <italic>false</italic>
         <bold>true</bold>
+        <kerning>false</kerning>
        </font>
       </property>
       <property name="text">
@@ -2308,7 +2324,7 @@
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.875pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Each of the 4 columns below represents a unique term in an objective function (OF). Multiple columns (or terms) can be set to build a multi objective function. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Row1. Subarea ID or Reach ID for evaluation. *Note that Sub ID is different from Subarea number.&lt;/span&gt;&lt;/p&gt;
@@ -2330,6 +2346,7 @@ p, li { white-space: pre-wrap; }
        <property name="font">
         <font>
          <italic>false</italic>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="frameShape">
@@ -2339,7 +2356,7 @@ p, li { white-space: pre-wrap; }
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.875pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Example case: calibrate the model using monthly data of streamflow at Sub 1 and sediment at Sub 2,  weighting 70% for flow and 30% for sediment. Neither is watershed outlet.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Column 1: Subarea ID=1, Time step=M, Weight=0.7,  APEX output=RCH-flow, Crop name=empty&lt;/span&gt;&lt;/p&gt;
@@ -2409,11 +2426,11 @@ p, li { white-space: pre-wrap; }
       <property name="alternatingRowColors">
        <bool>true</bool>
       </property>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>100</number>
-      </attribute>
       <attribute name="horizontalHeaderMinimumSectionSize">
        <number>20</number>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>100</number>
       </attribute>
       <attribute name="verticalHeaderDefaultSectionSize">
        <number>22</number>
@@ -13498,6 +13515,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
        <property name="font">
         <font>
          <pointsize>8</pointsize>
+         <kerning>false</kerning>
         </font>
        </property>
        <item>
@@ -13854,6 +13872,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
          <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -13897,6 +13916,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
         <font>
          <weight>75</weight>
          <bold>true</bold>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -13945,6 +13965,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
          <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>
+         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -13970,6 +13991,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
         <pointsize>11</pointsize>
         <weight>75</weight>
         <bold>true</bold>
+        <kerning>false</kerning>
        </font>
       </property>
       <property name="text">
@@ -13994,6 +14016,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
       <property name="font">
        <font>
         <pointsize>8</pointsize>
+        <kerning>false</kerning>
        </font>
       </property>
       <property name="title">
@@ -14175,6 +14198,176 @@ In calibration, any APEX result that does not meet the constraints is discarded 
      <zorder>groupBox_8</zorder>
      <zorder>btn_plot</zorder>
     </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>UA</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox_18">
+        <property name="title">
+         <string>Uncertainty Setting</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox_16">
+             <property name="title">
+              <string>Modules</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QRadioButton" name="radioButton_dream">
+                <property name="text">
+                 <string>DREAM</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_mcmc">
+                <property name="text">
+                 <string>MCMC</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_sceua">
+                <property name="text">
+                 <string>SCEUA</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton">
+                <property name="text">
+                 <string>RadioButton</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_17">
+             <property name="title">
+              <string>Likelihoods / Objective Functions</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <widget class="QComboBox" name="comboBox_likelihoods">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_19">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string extracomment="dfdfdfdf"/>
+             </property>
+             <property name="title">
+              <string> nChains</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <widget class="QSpinBox" name="spinBox_nchains">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="value">
+                 <number>10</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_20">
+             <property name="maximumSize">
+              <size>
+               <width>70</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="title">
+              <string>nRuns</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QLineEdit" name="lineEdit_Runs">
+                <property name="text">
+                 <string>1000</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_setupUA">
+           <property name="text">
+            <string>Confirm</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_27">
     <property name="geometry">
@@ -14198,13 +14391,25 @@ In calibration, any APEX result that does not meet the constraints is discarded 
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>25</y>
+       <y>20</y>
        <width>586</width>
        <height>176</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+       <stylestrategy>PreferAntialias</stylestrategy>
+      </font>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
      <property name="lineWidth">
       <number>0</number>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::WidgetWidth</enum>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_log">
@@ -14249,7 +14454,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
      <x>0</x>
      <y>0</y>
      <width>725</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -14365,7 +14570,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
   </action>
  </widget>
  <resources>
-  <include location="../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/icons.qrc"/>
+  <include location="icons.qrc"/>
  </resources>
  <connections/>
  <designerdata>

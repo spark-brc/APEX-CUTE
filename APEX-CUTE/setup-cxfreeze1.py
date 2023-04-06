@@ -5,10 +5,11 @@ import os
 packages = ['pkg_resources', 'scipy']
 includefiles = [
             os.path.join(sys.base_prefix, 'Library', 'bin', 'sqlite3.dll'),
-#            os.path.join(sys.base_prefix, 'Library', 'bin', 'mkl_intel_thread.dll'),
-#            os.path.join(sys.base_prefix, 'Library', 'bin', 'mkl_core.dll'),
-#            os.path.join(sys.base_prefix, 'Library', 'bin', 'mkl_def.dll'),
-#            os.path.join(sys.base_prefix, 'Library', 'plugins/platforms'),            
+            # os.path.join(sys.base_prefix, 'DLLs', '_ctypes.pyd'),
+            # os.path.join(sys.base_prefix, 'Library', 'bin', 'mkl_intel_thread.dll'),
+            # os.path.join(sys.base_prefix, 'Library', 'bin', 'mkl_core.dll'),
+            # os.path.join(sys.base_prefix, 'Library', 'bin', 'mkl_def.dll'),
+            # os.path.join(sys.base_prefix, 'Library', 'plugins/platforms'),            
             "cute_gui_r1.ui", "ApexCUTE2.ico", "ApexCUTE2.png", "add-file-48.ico"
 			, "close-window-48.ico", "folder-48.ico", "save-48.ico", "save-as-48.ico"
         ]
@@ -26,7 +27,7 @@ options ={
         'packages': packages,
         'include_files': includefiles,
         'excludes': excludes,
-        'build_exe': './/build'
+        'build_exe': './/build',
     }
 }
 
@@ -37,3 +38,4 @@ setup(
     description='APEX-CUTE',
     executables=[exe]
     )
+

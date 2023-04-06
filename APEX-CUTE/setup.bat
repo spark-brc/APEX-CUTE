@@ -1,2 +1,2 @@
-path=C:\Users\seonggyu.park\Miniconda3\envs\ac37
+path=C:\Users\jaehak.jeong\Miniconda3\envs\cute-env
 python setup-cxfreeze1.py build 

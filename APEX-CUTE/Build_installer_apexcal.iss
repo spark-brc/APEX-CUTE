@@ -7,14 +7,14 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{149C645E-C505-487A-86E5-64E45512AF66}
 AppName=APEX-CUTE
-AppVersion=7.7
+AppVersion=7.8
 AppPublisher=Texas A&M AgriLife Research
 AppPublisherURL=https://epicapex.tamu.edu/
 AppSupportURL=https://groups.google.com/forum/#!forum/agriliferesearchmodeling
-AppUpdatesURL=https://epicapex.tamu.edu/model-executables/
+AppUpdatesURL=https://epicapex.tamu.edu/software/
 DefaultDirName=C:\APEX\APEX-CUTE
 DefaultGroupName=APEX-CUTE
-OutputBaseFilename=APEX-CUTE_7r7_winamd64_APEX1501
+OutputBaseFilename=APEX-CUTE_7r8_winamd64_APEX1501
 SetupIconFile=D:\APEX\APEX_CUTE\apex_tool_1501\ApexCUTE2.ico
 Compression=lzma
 SolidCompression=yes
@@ -32,9 +32,9 @@ Source: "D:\APEX\APEX_CUTE\apex_tool_1501\project\*"; DestDir: "{app}"; Flags: i
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\APEX-CUTE 7.7"; Filename: "{app}\APEX-CUTE.exe"
+Name: "{group}\APEX-CUTE 7.8"; Filename: "{app}\APEX-CUTE.exe"
 Name: "{group}\{cm:UninstallProgram,APEX-CUTE}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\APEX-CUTE 7.7"; Filename: "{app}\APEX-CUTE.exe"; IconFilename: {app}\ApexCUTE2.ico; 
+Name: "{commondesktop}\APEX-CUTE 7.8"; Filename: "{app}\APEX-CUTE.exe"; IconFilename: {app}\ApexCUTE2.ico; 
 
 [Run]
 Filename: "{app}\APEX-CUTE.exe"; Description: "{cm:LaunchProgram,APEX-CUTE}"; Flags: nowait postinstall skipifsilent

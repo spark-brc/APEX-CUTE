@@ -25,9 +25,9 @@ def LWEOUTread():
     icount = 0
 
     for i in range(0,len(parm.apex_var)):
-        if parm.apex_var[i]==29:             #Horizontal flux
+        if parm.apex_var[i]==30:             #Horizontal flux
             var1 = lwe_data[:,5]
-        elif parm.apex_var[i]==30:             #Vertical flux
+        elif parm.apex_var[i]==31:             #Vertical flux
             var1 = lwe_data[:,6]
 
     #Aggregate output 

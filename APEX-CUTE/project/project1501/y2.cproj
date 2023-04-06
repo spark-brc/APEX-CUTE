@@ -1,13 +1,13 @@
 D:\APEX\APEX_CUTE\apex_tool_1501\project\project1501\TxtInOut
 Calib
 10
-1/1/2000,12/31/2003
+1/1/1998,12/31/2009
 1/1/2004,12/31/2006
-100
-PBIAS
+10
+R2
 New calibration
 User default values
-1,Yearly,SUB-ET,1.0,CORN
+2,Monthly,RCH-Flow,1.0,CORN
 NoData
 NoData
 NoData

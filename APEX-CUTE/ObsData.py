@@ -31,7 +31,7 @@ def read():
         elif parm.apex_var[i]<=27: 
             fn = 'crp_' 
             readfn(i,fn,filelist)
-        elif parm.apex_var[i]==28: 
+        elif parm.apex_var[i]==28 or parm.apex_var[i]==29: 
             readobscrop.read(i) #Read grain yield data, if any.
             if parm.iflg==1: return
         else:
@@ -41,7 +41,7 @@ def read():
 
         #Start/ending date
     for i in range(len(parm.apex_outlets)):
-        if not (parm.apex_var[i]>=28 and parm.obs_yld_type=='9999'):
+        if not (parm.apex_var[i]==28 and parm.obs_yld_type=='9999'):
             parm.start_obs[i] = parm.obs_date[i][0]
             parm.end_obs[i] = parm.obs_date[i][len(parm.obs_date[i])-1]
  

@@ -1250,6 +1250,11 @@
        </item>
        <item>
         <property name="text">
+         <string>ACY-OCPD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>SED-HFLUX</string>
         </property>
        </item>
@@ -1705,6 +1710,11 @@
        </item>
        <item>
         <property name="text">
+         <string>ACY-OCPD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>SED-HFLUX</string>
         </property>
        </item>
@@ -1990,6 +2000,11 @@
        <item>
         <property name="text">
          <string>ACY-YLDG</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ACY-OCPD</string>
         </property>
        </item>
        <item>
@@ -2283,6 +2298,11 @@
        </item>
        <item>
         <property name="text">
+         <string>ACY-OCPD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>SED-HFLUX</string>
         </property>
        </item>
@@ -2324,7 +2344,7 @@
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.14286pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Each of the 4 columns below represents a unique term in an objective function (OF). Multiple columns (or terms) can be set to build a multi objective function. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Row1. Subarea ID or Reach ID for evaluation. *Note that Sub ID is different from Subarea number.&lt;/span&gt;&lt;/p&gt;
@@ -2356,7 +2376,7 @@ p, li { white-space: pre-wrap; }
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.14286pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Example case: calibrate the model using monthly data of streamflow at Sub 1 and sediment at Sub 2,  weighting 70% for flow and 30% for sediment. Neither is watershed outlet.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Column 1: Subarea ID=1, Time step=M, Weight=0.7,  APEX output=RCH-flow, Crop name=empty&lt;/span&gt;&lt;/p&gt;
@@ -13712,7 +13732,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
          </rect>
         </property>
         <property name="text">
-         <string>Grain Yield</string>
+         <string>Crop/SOC</string>
         </property>
        </widget>
       </widget>
@@ -13906,9 +13926,9 @@ In calibration, any APEX result that does not meet the constraints is discarded 
        </property>
        <property name="geometry">
         <rect>
-         <x>170</x>
+         <x>130</x>
          <y>30</y>
-         <width>136</width>
+         <width>126</width>
          <height>31</height>
         </rect>
        </property>
@@ -13926,9 +13946,9 @@ In calibration, any APEX result that does not meet the constraints is discarded 
       <widget class="QPushButton" name="btn_save">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>10</x>
          <y>30</y>
-         <width>131</width>
+         <width>101</width>
          <height>31</height>
         </rect>
        </property>
@@ -13973,6 +13993,31 @@ In calibration, any APEX result that does not meet the constraints is discarded 
        </property>
        <property name="openExternalLinks">
         <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_stop">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>275</x>
+         <y>30</y>
+         <width>46</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Stop</string>
        </property>
       </widget>
      </widget>

@@ -22,7 +22,8 @@ from ua import handler
 #--------------------------------------------------------------------------------------
 
 
-parm.cute_rev = 'APEX-CUTE7.7'
+
+parm.cute_rev = 'APEX-CUTE7.8'
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
     
@@ -118,6 +119,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.btn_plot.clicked.connect(self.update_graph)
         self.rb_parm_sensitivity.toggled.connect(self.btnselected)
         self.btn_log.clicked.connect(save_log_file) 
+        self.btn_stop.clicked.connect(stop_run) 
  
         self.tabWidget.currentChanged.connect(self.onChange)
 
@@ -193,7 +195,7 @@ class MyWindow(QtWidgets.QMainWindow):
             elif self.txt_apex_out_1.currentIndex()<28: #SUB
                 self.rb_user_obs_type_sub.setChecked(True)
                 obid2=1
-            else: #GRAIN YIELD (ACY)
+            elif self.txt_apex_out_1.currentIndex()==28 or self.txt_apex_out_1.currentIndex()==29: #ACY
                 self.rb_user_obs_type_crp.setChecked(True)
                 obid2=2
 
@@ -237,6 +239,7 @@ class MyWindow(QtWidgets.QMainWindow):
         import SensitivyRank, read_ddsout
         ylabel=''
         pname=''
+        parm.iflg=0
 
         if ui.rb_sobol_si.isChecked():
              SensitivyRank.read('Sobol') #read sobol sensitivity index rank output.
@@ -244,7 +247,8 @@ class MyWindow(QtWidgets.QMainWindow):
         elif ui.rb_fast_si.isChecked():
              SensitivyRank.read('FAST') #read fast sensitivity index rank output.
 
-        if parm.iflg==1: return
+        if parm.iflg==1: 
+            return
 
         if ui.rb_sobol_si.isChecked() or ui.rb_fast_si.isChecked():
             data=[]
@@ -769,12 +773,15 @@ def open_cute_proj():
     elif txts[2].upper()=="ACY-YLDG":
         parm.apex_var.append(28)
         ui.txt_apex_out_1.setCurrentIndex(28)
-    elif txts[2].upper()=="SED-HFLUX":
+    elif txts[2].upper()=="ACY-OCPD":
         parm.apex_var.append(29)
         ui.txt_apex_out_1.setCurrentIndex(29)
-    elif txts[2].upper()=="SED-VFLUX":
+    elif txts[2].upper()=="SED-HFLUX":
         parm.apex_var.append(30)
         ui.txt_apex_out_1.setCurrentIndex(30)
+    elif txts[2].upper()=="SED-VFLUX":
+        parm.apex_var.append(31)
+        ui.txt_apex_out_1.setCurrentIndex(31)
     else:
         msgbox.msg("Error", "An error occurred while reading Line 10. \n"+"Outlets tab's 1st column inputs incorrect.")
         ui.progressBar.setValue(0)
@@ -791,11 +798,11 @@ def open_cute_proj():
     ui.txt_crop_1.setText(txts[4])
     parm.apex_crop.append(txts[4])
 
-    if parm.apex_var[0]==28:
+    if parm.apex_var[0]==28 or parm.apex_var[0]==29:
         parm.apex_output.append('ACY')
     elif parm.apex_var[0]>=9 and parm.apex_var[0]<=27:
         parm.apex_output.append('SAD')
-    elif parm.apex_var[0]>=29 :
+    elif parm.apex_var[0]==30 or parm.apex_var[0]==31 :
         parm.apex_output.append('LWE')
     else:
         parm.apex_output.append('RCH')
@@ -910,12 +917,15 @@ def open_cute_proj():
         elif txts[2].upper()=="ACY-YLDG":
             parm.apex_var.append(28)
             ui.txt_apex_out_2.setCurrentIndex(28)
-        elif txts[2].upper()=="SED-HFLUX":
+        elif txts[2].upper()=="ACY-OCPD":
             parm.apex_var.append(29)
             ui.txt_apex_out_2.setCurrentIndex(29)
-        elif txts[2].upper()=="SED-VFLUX":
+        elif txts[2].upper()=="SED-HFLUX":
             parm.apex_var.append(30)
             ui.txt_apex_out_2.setCurrentIndex(30)
+        elif txts[2].upper()=="SED-VFLUX":
+            parm.apex_var.append(31)
+            ui.txt_apex_out_2.setCurrentIndex(31)
         else:
             msgbox.msg("Error", "An error occurred while reading Line 10. \n"+"Outlets tab's 2nd column inputs incorrect.")
             ui.progressBar.setValue(0)
@@ -932,11 +942,11 @@ def open_cute_proj():
         ui.txt_crop_2.setText(txts[4])
         parm.apex_crop.append(txts[4])
 
-        if parm.apex_var[1]==28:
+        if parm.apex_var[1]==28 or parm.apex_var[1]==29:
             parm.apex_output.append('ACY')
         elif parm.apex_var[1]>=9 and parm.apex_var[1]<=27:
             parm.apex_output.append('SAD')
-        elif parm.apex_var[1]>=29 :
+        elif parm.apex_var[1]==30 or parm.apex_var[1]==31:
             parm.apex_output.append('LWE')
         else:
             parm.apex_output.append('RCH')
@@ -1051,12 +1061,15 @@ def open_cute_proj():
         elif txts[2].upper()=="ACY-YLDG":
             parm.apex_var.append(28)
             ui.txt_apex_out_3.setCurrentIndex(28)
-        elif txts[2].upper()=="SED-HFLUX":
+        elif txts[2].upper()=="ACY-OCPD":
             parm.apex_var.append(29)
             ui.txt_apex_out_3.setCurrentIndex(29)
-        elif txts[2].upper()=="SED-VFLUX":
+        elif txts[2].upper()=="SED-HFLUX":
             parm.apex_var.append(30)
             ui.txt_apex_out_3.setCurrentIndex(30)
+        elif txts[2].upper()=="SED-VFLUX":
+            parm.apex_var.append(31)
+            ui.txt_apex_out_3.setCurrentIndex(31)
         else:
             msgbox.msg("Error", "An error occurred while reading Line 10. \n"+"Outlets tab's 3rd column inputs incorrect.")
             ui.progressBar.setValue(0)
@@ -1073,11 +1086,11 @@ def open_cute_proj():
         ui.txt_crop_3.setText(txts[4])
         parm.apex_crop.append(txts[4])
 
-        if parm.apex_var[2]==28:
+        if parm.apex_var[2]==28 or parm.apex_var[2]==29:
             parm.apex_output.append('ACY')
         elif parm.apex_var[2]>=9 and parm.apex_var[2]<=27:
             parm.apex_output.append('SAD')
-        elif parm.apex_var[2]>=29 :
+        elif parm.apex_var[2]==30 or parm.apex_var[2]==31:
             parm.apex_output.append('LWE')
         else:
             parm.apex_output.append('RCH')
@@ -1193,12 +1206,15 @@ def open_cute_proj():
         elif txts[2].upper()=="ACY-YLDG":
             parm.apex_var.append(28)
             ui.txt_apex_out_4.setCurrentIndex(28)
-        elif txts[2].upper()=="SED-HFLUX":
+        elif txts[2].upper()=="ACY-OCPD":
             parm.apex_var.append(29)
             ui.txt_apex_out_4.setCurrentIndex(29)
-        elif txts[2].upper()=="SED-VFLUX":
+        elif txts[2].upper()=="SED-HFLUX":
             parm.apex_var.append(30)
             ui.txt_apex_out_4.setCurrentIndex(30)
+        elif txts[2].upper()=="SED-VFLUX":
+            parm.apex_var.append(31)
+            ui.txt_apex_out_4.setCurrentIndex(31)
         else:
             msgbox.msg("Error", "An error occurred while reading Line 10. \n"+"Outlets tab's 4th column inputs incorrect.")
             ui.progressBar.setValue(0)
@@ -1215,11 +1231,11 @@ def open_cute_proj():
         ui.txt_crop_4.setText(txts[4])
         parm.apex_crop.append(txts[4])
 
-        if parm.apex_var[3]==28:
+        if parm.apex_var[3]==28 or parm.apex_var[3]==29:
             parm.apex_output.append('ACY')
         elif parm.apex_var[3]>=9 and parm.apex_var[3]<=27:
             parm.apex_output.append('SAD')
-        elif parm.apex_var[3]>=29 :
+        elif parm.apex_var[3]==30 or parm.apex_var[3]==31:
             parm.apex_output.append('LWE')
         else:
             parm.apex_output.append('RCH')
@@ -1283,6 +1299,13 @@ def open_cute_proj():
     time.sleep(0.5)
     ui.progressBar.setValue(0)
 
+def stop_run():
+    parm.stop_run=1
+    ui.messages.append(' '   + '\n')
+    ui.messages.append('APEX iteration is stopped.'   + '\n')
+    ui.progressBar.setValue(0)
+    qApp.processEvents()
+    msgbox.msg("Message", "APEX iteration is stopped..")
 
 def saveas_proj():
     if parm.proj_cur==0:
@@ -1481,12 +1504,12 @@ def btn_confirm():
                 fn = 'sub_' 
             elif parm.apex_var[i]<=27: 
                 fn = 'crp_' 
-            elif parm.apex_var[i]==28: 
+            elif parm.apex_var[i]==28 or parm.apex_var[i]==29: 
                 filename = 'obs_crop.csv'
             else:
                 fn = 'lwe_' 
 
-            if parm.apex_var[i]!=28: 
+            if parm.apex_var[i]!=28 and parm.apex_var[i]!=29: 
                 if parm.obs_dt[i].upper() == 'DAILY':
                     filename = fn + 'daily' + str(parm.apex_outlets[i]) + '.csv'
 
@@ -1603,9 +1626,12 @@ def btn_confirm():
     ui.progressBar_1.setValue(0);qApp.processEvents()
  
 def btn_run():
-    parm.iflg==0
+    parm.iflg=0
+    parm.stop_run=0
     os.chdir(parm.path_proj)
 
+    #Enable the STOP button 
+    ui.btn_stop.setEnabled(True)   
     ui.fig.clf()
     if ui.rb_calibration.isChecked():
         #show calibration status window in the plotting
@@ -1729,7 +1755,8 @@ def calib():
     parm.cur_test_var = parm.cur_best_var[:]
     execute_apex.run()                
     if parm.iflg==1: return                 
-        
+    if parm.stop_run==1: return   
+       
     QuliRun.save()
     msgbox.msg("Message", "The calibration has completed.")
     ui.progressBar_1.setValue(0)
@@ -1818,16 +1845,18 @@ def cute_setting_save():
         parm.apex_var.append(27)
     elif ui.txt_apex_out_1.currentText()=="ACY-YLDG":
         parm.apex_var.append(28)
-    elif ui.txt_apex_out_1.currentText()=="SED-HFLUX":
+    elif ui.txt_apex_out_1.currentText()=="ACY-OCPD":
         parm.apex_var.append(29)
-    elif ui.txt_apex_out_1.currentText()=="SED-VFLUX":
+    elif ui.txt_apex_out_1.currentText()=="SED-HFLUX":
         parm.apex_var.append(30)
+    elif ui.txt_apex_out_1.currentText()=="SED-VFLUX":
+        parm.apex_var.append(31)
 
-    if parm.apex_var[0]==28:
+    if parm.apex_var[0]==28 or parm.apex_var[0]==29:
         parm.apex_output.append('ACY')
     elif parm.apex_var[0]>=9 and parm.apex_var[0]<=27:
         parm.apex_output.append('SAD')
-    elif parm.apex_var[0]>=29:
+    elif parm.apex_var[0]==30 or parm.apex_var[0]==31:
         parm.apex_output.append('LWE')
     else:
         parm.apex_output.append('RCH')
@@ -1841,11 +1870,18 @@ def cute_setting_save():
             parm.iflg=1; return
  
     #consistency check 
-    if ui.txt_dt_1.currentText()!="Yearly" and ui.txt_apex_out_1.currentText()=="ACY-YLDG (Yearly)":
-        parm.error_msg = "Select Yearly timestep to evaluate YLDG."
-        msgbox.msg("Error ", parm.error_msg)
-        ui.messages.append("Error: "+parm.error_msg)
-        parm.iflg=1; return
+    if ui.txt_dt_1.currentText()!="Yearly" and ui.txt_apex_out_1.currentText()=="ACY-YLDG":
+        ui.txt_dt_1.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-YLDG."
+        ui.messages.append("Alert: "+parm.error_msg)
+        #parm.iflg=1; return
+
+    if ui.txt_dt_1.currentText()!="Yearly" and ui.txt_apex_out_1.currentText()=="ACY-OCPD":
+        ui.txt_dt_1.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-OCPD."
+        ui.messages.append("Alert: "+parm.error_msg)
 
     if ui.txt_apex_out_1.currentIndex()>25 and len(ui.txt_crop_1.text())!=4:
             parm.error_msg = "Error message", "Input a 4-letter crop name to continue."
@@ -1924,16 +1960,18 @@ def cute_setting_save():
         parm.apex_var.append(27)
     elif ui.txt_apex_out_2.currentText()=="ACY-YLDG":
         parm.apex_var.append(28)
-    elif ui.txt_apex_out_2.currentText()=="SED-HFLUX":
+    elif ui.txt_apex_out_2.currentText()=="ACY-OCPD":
         parm.apex_var.append(29)
-    elif ui.txt_apex_out_2.currentText()=="SED-VFLUX":
+    elif ui.txt_apex_out_2.currentText()=="SED-HFLUX":
         parm.apex_var.append(30)
+    elif ui.txt_apex_out_2.currentText()=="SED-VFLUX":
+        parm.apex_var.append(31)
 
-    if parm.apex_var[1]==28:
+    if parm.apex_var[1]==28 or parm.apex_var[1]==29:
         parm.apex_output.append('ACY')
     elif parm.apex_var[1]>=9 and parm.apex_var[1]<=27:
         parm.apex_output.append('SAD')
-    elif parm.apex_var[1]>=29 :
+    elif parm.apex_var[1]==30 or parm.apex_var[1]==31:
         parm.apex_output.append('LWE')
     else:
         parm.apex_output.append('RCH')
@@ -1947,11 +1985,18 @@ def cute_setting_save():
             parm.iflg=1; return
  
     #consistency check 
-    if ui.txt_dt_2.currentText()!="Yearly" and ui.txt_apex_out_2.currentText()=="ACY-YLDG (Yearly)":
-        parm.error_msg ="Select Yearly timestep to evaluate YLDG."
-        msgbox.msg("Error ", parm.error_msg)
-        ui.messages.append("Error: "+parm.error_msg)
-        parm.iflg=1; return
+    if ui.txt_dt_2.currentText()!="Yearly" and ui.txt_apex_out_2.currentText()=="ACY-YLDG":
+        ui.txt_dt_2.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-YLDG."
+        ui.messages.append("Alert: "+parm.error_msg)
+        #parm.iflg=1; return
+
+    if ui.txt_dt_2.currentText()!="Yearly" and ui.txt_apex_out_2.currentText()=="ACY-OCPD":
+        ui.txt_dt_2.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-OCPD."
+        ui.messages.append("Alert: "+parm.error_msg)
 
     if ui.txt_apex_out_2.currentIndex()>25 and len(ui.txt_crop_2.text())!=4:
         parm.error_msg = "Input a 4-letter crop name to continue."
@@ -2030,16 +2075,18 @@ def cute_setting_save():
         parm.apex_var.append(27)
     elif ui.txt_apex_out_3.currentText()=="ACY-YLDG":
         parm.apex_var.append(28)
-    elif ui.txt_apex_out_3.currentText()=="SED-HFLUX":
+    elif ui.txt_apex_out_3.currentText()=="ACY-OCPD":
         parm.apex_var.append(29)
-    elif ui.txt_apex_out_3.currentText()=="SED-VFLUX":
+    elif ui.txt_apex_out_3.currentText()=="SED-HFLUX":
         parm.apex_var.append(30)
+    elif ui.txt_apex_out_3.currentText()=="SED-VFLUX":
+        parm.apex_var.append(31)
 
-    if parm.apex_var[2]==28:
+    if parm.apex_var[2]==28 or parm.apex_var[2]==29:
         parm.apex_output.append('ACY')
     elif parm.apex_var[2]>=9 and parm.apex_var[2]<=27:
         parm.apex_output.append('SAD')
-    elif parm.apex_var[2]>=29 :
+    elif parm.apex_var[2]==30 or parm.apex_var[2]==31:
         parm.apex_output.append('LWE')
     else:
         parm.apex_output.append('RCH')
@@ -2053,11 +2100,18 @@ def cute_setting_save():
             parm.iflg=1; return
  
     #consistency check 
-    if ui.txt_dt_3.currentText()!="Yearly" and ui.txt_apex_out_3.currentText()=="ACY-YLDG (Yearly)":
-        parm.error_msg = "Select Yearly timestep to evaluate YLDG."
-        msgbox.msg("Error ", parm.error_msg)
-        ui.messages.append("Error: "+parm.error_msg)
-        parm.iflg=1; return
+    if ui.txt_dt_3.currentText()!="Yearly" and ui.txt_apex_out_3.currentText()=="ACY-YLDG":
+        ui.txt_dt_3.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-YLDG."
+        ui.messages.append("Alert: "+parm.error_msg)
+        #parm.iflg=1; return
+
+    if ui.txt_dt_3.currentText()!="Yearly" and ui.txt_apex_out_3.currentText()=="ACY-OCPD":
+        ui.txt_dt_3.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-OCPD."
+        ui.messages.append("Alert: "+parm.error_msg)
 
     if ui.txt_apex_out_3.currentIndex()>25 and len(ui.txt_crop_3.text())!=4:
         parm.error_msg = "Input a 4-letter crop name to continue."
@@ -2136,16 +2190,18 @@ def cute_setting_save():
         parm.apex_var.append(27)
     elif ui.txt_apex_out_4.currentText()=="ACY-YLDG":
         parm.apex_var.append(28)
-    elif ui.txt_apex_out_4.currentText()=="SED-HFLUX":
+    elif ui.txt_apex_out_4.currentText()=="ACY-OCPD":
         parm.apex_var.append(29)
-    elif ui.txt_apex_out_4.currentText()=="SED-VFLUX":
+    elif ui.txt_apex_out_4.currentText()=="SED-HFLUX":
         parm.apex_var.append(30)
+    elif ui.txt_apex_out_4.currentText()=="SED-VFLUX":
+        parm.apex_var.append(31)
 
-    if parm.apex_var[3]==28:
+    if parm.apex_var[3]==28 or parm.apex_var[3]==29:
         parm.apex_output.append('ACY')
     elif parm.apex_var[3]>=9 and parm.apex_var[3]<=27:
         parm.apex_output.append('SAD')
-    elif parm.apex_var[3]>=29 :
+    elif parm.apex_var[3]==30 or parm.apex_var[3]==31:
         parm.apex_output.append('LWE')
     else:
         parm.apex_output.append('RCH')
@@ -2159,11 +2215,18 @@ def cute_setting_save():
             parm.iflg=1; return
  
     #consistency check 
-    if ui.txt_dt_4.currentText()!="Yearly" and ui.txt_apex_out_4.currentText()=="ACY-YLDG (Yearly)":
-        parm.error_msg = "Select Yearly timestep to evaluate YLDG."
-        msgbox.msg("Error ", parm.error_msg)
-        ui.messages.append("Error: "+parm.error_msg)
-        parm.iflg=1; return
+    if ui.txt_dt_4.currentText()!="Yearly" and ui.txt_apex_out_4.currentText()=="ACY-YLDG":
+        ui.txt_dt_4.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-YLDG."
+        ui.messages.append("Alert: "+parm.error_msg)
+        #parm.iflg=1; return
+
+    if ui.txt_dt_4.currentText()!="Yearly" and ui.txt_apex_out_4.currentText()=="ACY-OCPD":
+        ui.txt_dt_4.setCurrentIndex(2)
+
+        parm.error_msg = "Time step is reset to Yearly for ACY-OCPD."
+        ui.messages.append("Alert: "+parm.error_msg)
 
     if ui.txt_apex_out_4.currentIndex()>25 and len(ui.txt_crop_4.text())!=4:
             parm.error_msg = "Input a 4-letter crop name to continue."
@@ -2482,6 +2545,7 @@ class dds_run():
         import math
         import parm
 
+        parm.iflg = 0
         ui.fig.clf()
         ax1=ui.fig.add_subplot(211)
         ax1.set_title("Calibration Status")
@@ -2563,7 +2627,8 @@ class dds_run():
 
                     #Run APEX and compute OF
                     execute_apex.run()
-                    if parm.iflg==1: return                 
+                    if parm.iflg==1: return   
+                    if parm.stop_run==1: return   
             
                     #Update the current best results
                     if j == 0 or parm.cur_test_OF < parm.cur_best_OF:
@@ -2643,6 +2708,7 @@ class dds_run():
             #Run APEX and compute OF
             execute_apex.run()
             if parm.iflg==1: return                 
+            if parm.stop_run==1: return   
 
             #Evaluate constraints
             take_this = 1
@@ -2792,6 +2858,7 @@ def SA_runs():
     from SALib.sample import saltelli,fast_sampler
     from SALib.analyze import sobol,fast
 
+    parm.stop_run=0
     params_file = 'params.txt'      
     problem = sa_util.read_param_file(params_file)
 

@@ -74,9 +74,9 @@ def read(i,fn):
             parm.obs_val[i] = obsdata[:,6] 
  
     if fn=='lwe_':
-        if parm.apex_var[i] == 29: # SED-HFLUX g/m/d
+        if parm.apex_var[i] == 30: # SED-HFLUX g/m/d
             parm.obs_val[i] = obsdata[:,2] 
-        elif parm.apex_var[i] == 30: # SED-VFLUX g/m/d
+        elif parm.apex_var[i] == 31: # SED-VFLUX g/m/d
             parm.obs_val[i] = obsdata[:,3] 
 
     #Count the total number of data rows

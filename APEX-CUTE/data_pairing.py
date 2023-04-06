@@ -110,7 +110,7 @@ def dataPair():
 
             parm.pred_vala[i] = ival[:]
             
-        elif parm.obs_dt[i].upper()=='YEARLY' and parm.apex_var[i]!=28: #yearly 
+        elif parm.apex_var[i]!=28 and parm.apex_var[i]!=29: #yearly 
             nyr = parm.txt_nbyr
             ival = [0 for x in range(nyr)]
             iyr = 0

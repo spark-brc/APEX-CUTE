@@ -34,12 +34,23 @@ def acy_read(i):
     #Read values
     icount = 0
     for j in range(inum):
-        if int(isub[j])==parm.apex_outlets[i] and icp[j].upper()==parm.apex_crop[i].upper():
-            if parm.apex_var[i]==28: #Grain yield,ton/ha/yr:
+        if int(isub[j])==parm.apex_outlets[i]:
+            if parm.apex_var[i]==28 and icp[j].upper()==parm.apex_crop[i].upper(): #Grain yield,ton/ha/yr:
                 iyr[icount] = datetime.date(int(acy_data[j,2]),1,1)
                 ival[icount] = float(acy_data[j,5])
                 icount += 1
-       
+            elif parm.apex_var[i]==29: #SOC in the plow depth, %
+                if j==0:
+                    iyr[icount] = datetime.date(int(acy_data[j,2]),1,1)
+                    ival[icount] = float(acy_data[j,19])
+                    icount += 1
+                else:
+                    if not (int(acy_data[j,2])==int(acy_data[j-1,2]) and int(acy_data[j,1])==int(acy_data[j-1,1])):
+                        iyr[icount] = datetime.date(int(acy_data[j,2]),1,1)
+                        ival[icount] = float(acy_data[j,19])
+                        icount += 1
+
+      
     parm.pred_date[i] = iyr[0:icount]
     parm.pred_datea[i] = parm.pred_date[i]  #date            
     parm.pred_val[i] = ival[0:icount]

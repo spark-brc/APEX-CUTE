@@ -71,7 +71,7 @@ class uaInit(object):
                 }
                 )
         sel_parm_pars = parm_pars.loc[parm_pars['select'] == str(1)]
-        sel_parm_pars.loc["type"] = "parm"
+        sel_parm_pars["type"] = "parm"
         return sel_parm_pars
 
     def export_other_pars(self, ui):

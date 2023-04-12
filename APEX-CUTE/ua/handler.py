@@ -2,7 +2,7 @@ import parm
 import os
 import pandas as pd
 import shutil
-from spotpy.likelihoods import (
+from ua.likelihoods import (
                             gaussianLikelihoodMeasErrorOut, gaussianLikelihoodHomoHeteroDataError, LikelihoodAR1WithC,
                             LikelihoodAR1NoC, generalizedLikelihoodFunction, LaplacianLikelihood, SkewedStudentLikelihoodHomoscedastic,
                             SkewedStudentLikelihoodHeteroscedastic, SkewedStudentLikelihoodHeteroscedasticAdvancedARModel,
@@ -15,10 +15,16 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QCoreApplication
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QFont
+import subprocess
+import read_output
+import datetime
+
+
+us_log_path = os.path.dirname(os.path.abspath( __file__ ))
 
 class uaInit(object):
     def __init__(self, ui):
-
+        self.curdir = os.getcwd()
         self.proj_dir = parm.path_proj
         self.TxtInout = parm.path_TxtInout
         os.chdir(self.proj_dir)
@@ -32,6 +38,19 @@ class uaInit(object):
             self.mod = "MCMC"
         elif ui.radioButton_sceua.isChecked():
             self.mod = "SCEUA"
+
+        # NOTE: read all ui setting here then use as initiates
+        if ui.rb_user_obs_day.isChecked():
+            self.time_step = "day"
+        if ui.rb_user_obs_mon.isChecked():
+            self.time_step = "month"
+        self.rchnum01 = ui.txt_sub_1.text()
+        if ui.rb_user_obs_type_rch.isChecked():
+            self.obs_type = "rch"
+        if ui.txt_apex_out_1.currentText().upper()=="RCH-FLOW":
+            self.obs_nam = "Flow(m3/s)"
+        self.obs_path = ui.txt_user_obs_save_path.toPlainText()
+
 
     def ua_worktree_setup(self):
         mod = self.mod
@@ -122,7 +141,7 @@ class uaInit(object):
         font = QFont("Consolas")
         ui.messages.setFont(font)
         infos = self.ua_set_info(ui)
-        with open(os.path.join(self.main_dir, 'ua_log.log'), "r", encoding="utf8") as f:
+        with open(os.path.join(us_log_path, 'ua_log.log'), "r", encoding="utf8") as f:
             count = 0
             for i, line in enumerate(f.readlines()):
                 # font = QFont("monospace")
@@ -153,6 +172,25 @@ class uaInit(object):
         return infos
 
 
+    def initial_run(self, ui):
+        qBox = QMessageBox()
+        reply = qBox.question(
+                            qBox, 'Please, wait until it is done ...',
+                            f"We are going to check on initial test run.\n Click Yes to proceed.",
+                            qBox.Yes, qBox.No)
+        if reply == qBox.Yes:
+            mod = self.mod
+            os.chdir(os.path.join(os.path.join(self.main_dir, mod)))
+            comline = "APEX1501.exe"
+            run_model = subprocess.Popen(comline, cwd=".")
+            # run_model = subprocess.Popen(comline, cwd=".")
+            run_model.wait()
+
+
+    def create_ua_sim_obd(self, ui):
+        # read rch
+        read_output.extract_day_stf
+
     # def print_ua_intro(self, ui):
     #     with open(os.path.join(self.main_dir, 'ua_log.log'), "r", encoding="utf8") as f:
     #         for line in f.readlines():
@@ -169,9 +207,28 @@ class uaInit(object):
 
 
 
-
-
-
+    def get_start_end_step(self):
+        mod = self.mod 
+        if os.path.isfile(os.path.join(self.main_dir, mod, "APEXCONT.DAT")):
+            with open(os.path.join(self.main_dir, 'APEXCONT.DAT'), "r") as f:
+                data = [x.strip().split() for x in f if x.strip()]
+            numyr = int(data[0][0])
+            styr = int(data[0][1])
+            stmon = int(data[0][2])
+            stday = int(data[0][3])
+            ptcode = int(data[0][4])
+            edyr = styr + numyr -1
+            stdate = datetime.datetime(styr, stmon, 1) + datetime.timedelta(stday - 1)
+            eddate = datetime.datetime(edyr, 12, 31)
+            stdate_ = stdate.strftime("%m/%d/%Y")
+            eddate_ = eddate.strftime("%m/%d/%Y")
+            return stdate_, eddate_, ptcode
+    
+    def read_apexrun(self):
+        mod = self.mod
+        with open(os.path.join(self.main_dir, mod, "APEXRUN.DAT", "r")) as f:
+            data = [x.strip().split() for x in f]
+        return data[0][0]
 
 
 

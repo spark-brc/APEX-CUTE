@@ -18,10 +18,13 @@ from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navigatio
 # NOTE: uncertainty parrt -------------------------------------------------------@spark
 from ua.handler import uaInit
 from ua import handler
+from ua.models import APEX_setup
+from ua import modules
+import inspect
 
 #--------------------------------------------------------------------------------------
 
-
+apex_cute_path =os.path.abspath(os.path.dirname(__file__))
 
 parm.cute_rev = 'APEX-CUTE7.8'
 class MyWindow(QtWidgets.QMainWindow):
@@ -31,6 +34,7 @@ class MyWindow(QtWidgets.QMainWindow):
         uic.loadUi('cute_gui_r1.ui', self)
         self.setWindowTitle(parm.cute_rev)
         self.setWindowIcon(QtGui.QIcon('ApexCUTE2.png'))
+        self.path =apex_cute_path
         # dummy plot
         labels = ['P1','P2','P3','P4','P5','P6']
         x = np.arange(len(labels))
@@ -128,9 +132,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.radioButton_dream.toggled.connect(obj_list)
         self.radioButton_mcmc.toggled.connect(obj_list)
         self.radioButton_sceua.toggled.connect(obj_list)
-
-
-
+        self.pushButton_test.clicked.connect(test)
 
 
 
@@ -2982,17 +2984,21 @@ def UA_activate():
     ua_proj.ua_worktree_setup()
     ua_proj.export_parm_pars(ui)
     ua_proj.all_pars(ui)
+    # os.chdir(apex_cute_path)
     ua_proj.print_ua_intro(ui)
-
+    os.chdir(apex_cute_path)
+    print(os.getcwd())
+    
+    # os.chdir(os.path.abspath(__file__))
 def obj_list():
     handler.obj_list(ui)
 
 
+def test():
+    modules.run_dream(ui)
+
+
 # ===============================================
-
-
-
-
 
 
 if __name__ == "__main__":

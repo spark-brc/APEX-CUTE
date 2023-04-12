@@ -1,6 +1,6 @@
 ﻿import parm
 import msgbox
-import main_prog
+# import main_prog
 
 
 def read():

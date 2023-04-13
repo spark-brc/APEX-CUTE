@@ -14546,7 +14546,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
   <action name="action_New_Project">
    <property name="icon">
     <iconset>
-     <normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/add-file-48.ico</normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/add-file-48.ico</iconset>
+     <normaloff>add-file-48.ico</normaloff>add-file-48.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;New Project</string>
@@ -14555,7 +14555,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
   <action name="action_Open_Project">
    <property name="icon">
     <iconset>
-     <normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/folder-48.ico</normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/folder-48.ico</iconset>
+     <normaloff>folder-48.ico</normaloff>folder-48.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;Open Project</string>
@@ -14564,7 +14564,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
   <action name="actionSave_Project">
    <property name="icon">
     <iconset>
-     <normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/save-48.ico</normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/save-48.ico</iconset>
+     <normaloff>save-48.ico</normaloff>save-48.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;Save Project</string>
@@ -14573,7 +14573,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
   <action name="actionSave_As">
    <property name="icon">
     <iconset>
-     <normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/save-as-48.ico</normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/save-as-48.ico</iconset>
+     <normaloff>save-as-48.ico</normaloff>save-as-48.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;Save As...</string>
@@ -14585,7 +14585,7 @@ In calibration, any APEX result that does not meet the constraints is discarded 
   <action name="action_Quit">
    <property name="icon">
     <iconset>
-     <normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/close-window-48.ico</normaloff>../../../BLM/Wind_erosion_aero/three_sites/APEX-CUTE/close-window-48.ico</iconset>
+     <normaloff>close-window-48.ico</normaloff>close-window-48.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;Close project</string>

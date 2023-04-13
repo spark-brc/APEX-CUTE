@@ -4,13 +4,14 @@ import pandas as pd
 import os
 import datetime
 
-# def create_ua_sim_obd(ui, wd, rch_num, obs_ts):
-#     stdate_, eddate_, sim_ts = get_start_end_step()
-#     # 3 monthly, 6 daily
-#     if sim_ts == 6 and obs_ts == "mon": # extract daily sim and resample monthly
-#         sim
+def create_ua_sim_obd(ui, wd, rch_num, obs_ts):
+    stdate_, eddate_, sim_ts = get_start_end_step()
+    # 3 monthly, 6 daily
+    if sim_ts == 6 and obs_ts == "mon": # extract daily sim and resample monthly
+        sims = extract_day_stf(ui, wd, rch_num).resample('M').mean()
 
-#     if sim_ts == 3 and obs_ts == "mon":
+    if sim_ts == 3 and obs_ts == "mon":
+        sims = extract_mon_stf(ui, wd)
 
 
 # stf discharge
@@ -18,7 +19,6 @@ def extract_day_stf(ui, wd, rch_num):
     rch_file = rch_nam(wd)
     stdate_, eddate_, sim_ts = get_start_end_step()
     channels = [ui.txt_sub_1.text()]
-    # start_day = "{}/{}/{}".format(parm.txt_ida, parm.txt_imo, parm.txt_iyr)
     # FIXME: import APEXCON.read() causes error
     start_day = stdate_
     cali_start_day = ui.txt_calibration_start_date.text()

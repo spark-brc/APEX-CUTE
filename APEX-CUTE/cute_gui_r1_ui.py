@@ -4702,14 +4702,13 @@ class Ui_MainWindow(object):
         self.radioButton_dream.setObjectName("radioButton_dream")
         self.horizontalLayout.addWidget(self.radioButton_dream)
         self.radioButton_mcmc = QtWidgets.QRadioButton(self.groupBox_16)
+        self.radioButton_mcmc.setCheckable(False)
         self.radioButton_mcmc.setObjectName("radioButton_mcmc")
         self.horizontalLayout.addWidget(self.radioButton_mcmc)
         self.radioButton_sceua = QtWidgets.QRadioButton(self.groupBox_16)
+        self.radioButton_sceua.setCheckable(False)
         self.radioButton_sceua.setObjectName("radioButton_sceua")
         self.horizontalLayout.addWidget(self.radioButton_sceua)
-        self.radioButton = QtWidgets.QRadioButton(self.groupBox_16)
-        self.radioButton.setObjectName("radioButton")
-        self.horizontalLayout.addWidget(self.radioButton)
         self.horizontalLayout_2.addWidget(self.groupBox_16)
         self.groupBox_17 = QtWidgets.QGroupBox(self.groupBox_18)
         self.groupBox_17.setObjectName("groupBox_17")
@@ -4744,10 +4743,10 @@ class Ui_MainWindow(object):
         self.lineEdit_Runs.setObjectName("lineEdit_Runs")
         self.verticalLayout_5.addWidget(self.lineEdit_Runs)
         self.horizontalLayout_2.addWidget(self.groupBox_20)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
         self.pushButton_setupUA = QtWidgets.QPushButton(self.groupBox_18)
         self.pushButton_setupUA.setObjectName("pushButton_setupUA")
-        self.verticalLayout_4.addWidget(self.pushButton_setupUA)
+        self.horizontalLayout_2.addWidget(self.pushButton_setupUA)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
         self.verticalLayout_2.addWidget(self.groupBox_18)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
@@ -4841,7 +4840,7 @@ class Ui_MainWindow(object):
         self.toolBar.addSeparator()
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(9)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -5068,7 +5067,7 @@ class Ui_MainWindow(object):
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.14286pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Each of the 4 columns below represents a unique term in an objective function (OF). Multiple columns (or terms) can be set to build a multi objective function. </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:6pt;\"> </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Row1. Subarea ID or Reach ID for evaluation. *Note that Sub ID is different from Subarea number.</span></p>\n"
@@ -5079,7 +5078,7 @@ class Ui_MainWindow(object):
         self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.14286pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Example case: calibrate the model using monthly data of streamflow at Sub 1 and sediment at Sub 2,  weighting 70% for flow and 30% for sediment. Neither is watershed outlet.</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:6pt;\">  </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Column 1: Subarea ID=1, Time step=M, Weight=0.7,  APEX output=RCH-flow, Crop name=empty</span></p>\n"
@@ -8036,18 +8035,17 @@ class Ui_MainWindow(object):
         self.rb_parm_sensitivity.setText(_translate("MainWindow", "Parm-OF Curve:"))
         self.rb_of.setText(_translate("MainWindow", "Optimization curve"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.run), _translate("MainWindow", "Run"))
-        self.groupBox_18.setTitle(_translate("MainWindow", "Uncertainty Setting"))
+        self.groupBox_18.setTitle(_translate("MainWindow", "Uncertainty Analysis Setting"))
         self.groupBox_16.setTitle(_translate("MainWindow", "Modules"))
         self.radioButton_dream.setText(_translate("MainWindow", "DREAM"))
         self.radioButton_mcmc.setText(_translate("MainWindow", "MCMC"))
         self.radioButton_sceua.setText(_translate("MainWindow", "SCEUA"))
-        self.radioButton.setText(_translate("MainWindow", "RadioButton"))
         self.groupBox_17.setTitle(_translate("MainWindow", "Likelihoods / Objective Functions"))
         self.groupBox_19.setTitle(_translate("MainWindow", " nChains"))
         self.groupBox_20.setTitle(_translate("MainWindow", "nRuns"))
         self.lineEdit_Runs.setText(_translate("MainWindow", "1000"))
         self.pushButton_setupUA.setText(_translate("MainWindow", "Confirm"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "UA"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Uncertainty Analysis"))
         self.groupBox_27.setTitle(_translate("MainWindow", "Logs"))
         self.btn_log.setText(_translate("MainWindow", "Export"))
         self.label_2.setText(_translate("MainWindow", "Save the log in a txt file."))

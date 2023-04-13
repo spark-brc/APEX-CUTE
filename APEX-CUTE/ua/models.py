@@ -34,7 +34,7 @@ class APEX_setup(object):
         pars_df = self.load_ua_pars()
         for i in range(len(pars_df)):
             self.params.append(
-                ua.parameter.Uniform(
+                parameter.Uniform(
                     name=pars_df.iloc[i, 0],
                     low=pars_df.iloc[i, 3],
                     high=pars_df.iloc[i, 4],
@@ -258,10 +258,7 @@ class APEX_setup(object):
             like = rmse(evaluation, simulation)
         else:
             like = self.obj_func(evaluation, simulation)
-        print("simulation")
-        print(len(simulation))
-        print("evaluation")
-        print(len(evaluation))
+
 
         # objectivefunction = spotpy.objectivefunctions.abs_pbias(
         #     evaluation, simulation

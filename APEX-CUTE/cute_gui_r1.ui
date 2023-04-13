@@ -50,7 +50,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -14245,13 +14245,13 @@ In calibration, any APEX result that does not meet the constraints is discarded 
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>UA</string>
+      <string>Uncertainty Analysis</string>
      </attribute>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QGroupBox" name="groupBox_18">
         <property name="title">
-         <string>Uncertainty Setting</string>
+         <string>Uncertainty Analysis Setting</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
@@ -14283,6 +14283,9 @@ In calibration, any APEX result that does not meet the constraints is discarded 
                 <property name="text">
                  <string>MCMC</string>
                 </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -14290,12 +14293,8 @@ In calibration, any APEX result that does not meet the constraints is discarded 
                 <property name="text">
                  <string>SCEUA</string>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="radioButton">
-                <property name="text">
-                 <string>RadioButton</string>
+                <property name="checkable">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -14386,23 +14385,16 @@ In calibration, any APEX result that does not meet the constraints is discarded 
              </layout>
             </widget>
            </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_setupUA">
+             <property name="text">
+              <string>Confirm</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_setupUA">
-           <property name="text">
-            <string>Confirm</string>
-           </property>
-          </widget>
-         </item>
         </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_test">
-        <property name="text">
-         <string>PushButton</string>
-        </property>
        </widget>
       </item>
       <item>

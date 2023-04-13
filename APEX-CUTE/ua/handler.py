@@ -16,7 +16,7 @@ from PyQt5.QtCore import QCoreApplication
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QFont
 import subprocess
-import read_output
+from ua import read_output
 import datetime
 
 

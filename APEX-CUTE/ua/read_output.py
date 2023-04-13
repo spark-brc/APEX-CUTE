@@ -4,21 +4,13 @@ import pandas as pd
 import os
 import datetime
 
-def create_ua_sim_obd(ui, wd, rch_num, obs_ts):
-    stdate_, eddate_, sim_ts = get_start_end_step()
-    # 3 monthly, 6 daily
-    if sim_ts == 6 and obs_ts == "mon": # extract daily sim and resample monthly
-        sim
+# def create_ua_sim_obd(ui, wd, rch_num, obs_ts):
+#     stdate_, eddate_, sim_ts = get_start_end_step()
+#     # 3 monthly, 6 daily
+#     if sim_ts == 6 and obs_ts == "mon": # extract daily sim and resample monthly
+#         sim
 
-    if sim_ts == 3 and obs_ts == "mon":
-
-
-
-
-
-
-
-
+#     if sim_ts == 3 and obs_ts == "mon":
 
 
 # stf discharge

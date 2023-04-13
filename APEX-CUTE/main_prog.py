@@ -14,6 +14,7 @@ import matplotlib.pylab as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvas 
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
+from subprocess import CREATE_NEW_CONSOLE
 
 # NOTE: uncertainty parrt -------------------------------------------------------@spark
 from ua.handler import uaInit
@@ -2995,9 +2996,10 @@ def obj_list():
 
 
 def test():
-    modules.run_dream(ui)
-
-
+    comline = "mpiexec -c 1 python -m mpi4py" + " D:\Projects\Tools\APEX-CUTE\APEX-UA_git\APEX-UA\main_dream.py"
+    # comline = "mpiexec -c 1" + " D:\Projects\Tools\APEX-CUTE\APEX-UA_git\APEX-UA\main_dream.py"
+    subprocess.Popen(comline, shell=True)
+    # subprocess.Popen('cmd.exe /K {}'.format(comline), creationflags=CREATE_NEW_CONSOLE)
 # ===============================================
 
 

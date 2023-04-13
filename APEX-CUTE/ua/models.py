@@ -1,6 +1,5 @@
 import parm
 import os
-import spotpy
 import pandas as pd
 import numpy as np
 from ua.pars import updatePars
@@ -25,7 +24,7 @@ class APEX_setup(object):
         pars_df = self.load_ua_pars()
         for i in range(len(pars_df)):
             self.params.append(
-                spotpy.parameter.Uniform(
+                ua.parameter.Uniform(
                     name=pars_df.iloc[i, 0],
                     low=pars_df.iloc[i, 3],
                     high=pars_df.iloc[i, 4],

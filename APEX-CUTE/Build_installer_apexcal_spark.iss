@@ -15,7 +15,7 @@ AppUpdatesURL=https://epicapex.tamu.edu/model-executables/
 DefaultDirName={%USERPROFILE}\APEX\APEX-CUTE
 DefaultGroupName=APEX-CUTE
 OutputBaseFilename=APEX-CUTE_7r7_winamd64_APEX1501
-SetupIconFile=d:\Projects\Tools\APEX-CUTE\APEX-CUTE\ApexCUTE2.ico
+SetupIconFile=D:\Projects\Tools\APEX-CUTE\APEX-CUTE_git\APEX-CUTE\ApexCUTE2.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -27,9 +27,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "d:\Projects\Tools\APEX-CUTE\APEX-CUTE\build\APEX-CUTE.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "d:\Projects\Tools\APEX-CUTE\APEX-CUTE\build\\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "d:\Projects\Tools\APEX-CUTE\APEX-CUTE\project\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Projects\Tools\APEX-CUTE\APEX-CUTE_git\APEX-CUTE\build\APEX-CUTE.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\Tools\APEX-CUTE\APEX-CUTE_git\APEX-CUTE\build\\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Projects\Tools\APEX-CUTE\APEX-CUTE_git\APEX-CUTE\project\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

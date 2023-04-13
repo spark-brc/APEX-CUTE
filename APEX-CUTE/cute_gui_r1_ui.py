@@ -4749,9 +4749,6 @@ class Ui_MainWindow(object):
         self.pushButton_setupUA.setObjectName("pushButton_setupUA")
         self.verticalLayout_4.addWidget(self.pushButton_setupUA)
         self.verticalLayout_2.addWidget(self.groupBox_18)
-        self.pushButton_test = QtWidgets.QPushButton(self.tab_2)
-        self.pushButton_test.setObjectName("pushButton_test")
-        self.verticalLayout_2.addWidget(self.pushButton_test)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
         self.tabWidget.addTab(self.tab_2, "")
@@ -5071,7 +5068,7 @@ class Ui_MainWindow(object):
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.14286pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Each of the 4 columns below represents a unique term in an objective function (OF). Multiple columns (or terms) can be set to build a multi objective function. </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:6pt;\"> </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Row1. Subarea ID or Reach ID for evaluation. *Note that Sub ID is different from Subarea number.</span></p>\n"
@@ -5082,7 +5079,7 @@ class Ui_MainWindow(object):
         self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.14286pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Example case: calibrate the model using monthly data of streamflow at Sub 1 and sediment at Sub 2,  weighting 70% for flow and 30% for sediment. Neither is watershed outlet.</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:6pt;\">  </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Column 1: Subarea ID=1, Time step=M, Weight=0.7,  APEX output=RCH-flow, Crop name=empty</span></p>\n"
@@ -8050,7 +8047,6 @@ class Ui_MainWindow(object):
         self.groupBox_20.setTitle(_translate("MainWindow", "nRuns"))
         self.lineEdit_Runs.setText(_translate("MainWindow", "1000"))
         self.pushButton_setupUA.setText(_translate("MainWindow", "Confirm"))
-        self.pushButton_test.setText(_translate("MainWindow", "PushButton"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "UA"))
         self.groupBox_27.setTitle(_translate("MainWindow", "Logs"))
         self.btn_log.setText(_translate("MainWindow", "Export"))

@@ -7,10 +7,9 @@ This file is part of Statistical Parameter Optimization Tool for Python(SPOTPY).
 
 import random
 import time
+import sys
 
 import numpy as np
-from PyQt5.QtCore import QCoreApplication
-
 from . import _algorithm
 
 
@@ -257,15 +256,8 @@ class dream(_algorithm):
             #            MR_stat = np.sqrt((n + 1) / n * R + (d - 1) / d)
             return R_stat  # [R_stat, MR_stat]
 
-    def ui_message(self, ui, messsagein):
-        QCoreApplication.processEvents()
-        ui.messages.append(messsagein)
-        QCoreApplication.processEvents()
-        # ui.raise_()        
-
     def sample(
         self,
-        ui, 
         repetitions,
         nChains=7,
         nCr=3,
@@ -276,18 +268,13 @@ class dream(_algorithm):
         runs_after_convergence=100,
         acceptance_test_option=6,
     ):
-        self.set_repetiton(ui, repetitions)
+        self.set_repetiton(repetitions)
         print(
             "Starting the DREAM algotrithm with " + str(repetitions) + " repetitions..."
         )
-        self.ui_message(ui,
-            "Starting the DREAM algotrithm with " + str(repetitions) + " repetitions..."
-        )
+        sys.stdout.flush()
         if nChains < 2 * delta + 1:
             print("Please use at least n=2*delta+1 chains!")
-            self.ui_message(ui,
-                "Please use at least n=2*delta+1 chains!"
-            )
             return None
         # Prepare storing MCMC chain as array of arrays.
         # define stepsize of MCMC.
@@ -318,9 +305,7 @@ class dream(_algorithm):
         # firstcall = True
 
         print("Initialize ", self.nChains, " chain(s)...")
-        self.ui_message(ui,
-            "Initialize " + str(self.nChains) + " chain(s)..."
-        )
+        sys.stdout.flush()
 
         self.iter = 0
         # for i in range(10):
@@ -331,15 +316,13 @@ class dream(_algorithm):
             for curChain in range(int(self.nChains))
         )  # TODO: Start with regular interval raster
         for curChain, par, sim in self.repeat(param_generator):
-            like = self.postprocessing(ui, self.iter, par, sim, chains=curChain)
+            like = self.postprocessing(self.iter, par, sim, chains=curChain)
             self.update_mcmc_status(par, like, sim, curChain)
             self.iter += 1
             self.nChainruns[curChain] += 1
 
         print("Beginn of Random Walk")
-        self.ui_message(ui,
-            "Beginn of Random Walk"
-        )
+        sys.stdout.flush()
         convergence = False
         # Walf through chains
         self.r_hats = []
@@ -371,7 +354,7 @@ class dream(_algorithm):
                 if nrN == 0:
                     ids = [np.random.randint(0, self.N)]
                     nrN = 1
-                like = self.postprocessing(ui, self.iter, par, sim, chains=cChain)
+                like = self.postprocessing(self.iter, par, sim, chains=cChain)
 
                 # set a option which type of comparision should be choose:
                 metro_opt = acceptance_test_option
@@ -423,9 +406,6 @@ class dream(_algorithm):
                 if self.status.stop:
                     self.iter = self.repetitions
                     print("Stopping samplig")
-                    self.ui_message(ui,
-                        "Stopping samplig"
-                    )
                     break
                 self.iter += 1
                 self.nChainruns[cChain] += 1
@@ -448,16 +428,12 @@ class dream(_algorithm):
                     * 100
                 ).strip("array([])")
                 print(text)
-                self.ui_message(ui,
-                    text
-                )
+                sys.stdout.flush()
                 text = "Convergence rates =" + str(
                     np.around((r_hat), decimals=4)
                 ).strip("array([])")
                 print(text)
-                self.ui_message(ui,
-                    text
-                )
+                sys.stdout.flush()
                 intervaltime = time.time()
             if (
                 (np.array(r_hat) < convergence_limit).all()
@@ -466,9 +442,6 @@ class dream(_algorithm):
             ):
                 # Stop sampling
                 print("#############")
-                self.ui_message(ui,
-                    "#############"
-                )
                 print(
                     "Convergence has been achieved after "
                     + str(self.iter)
@@ -478,25 +451,14 @@ class dream(_algorithm):
                     + str(runs_after_convergence)
                     + " runs will be additionally sampled to form the posterior distribution"
                 )
-                self.ui_message(ui,
-                    "Convergence has been achieved after "
-                    + str(self.iter)
-                    + " of "
-                    + str(self.repetitions)
-                    + " runs! Finally, "
-                    + str(runs_after_convergence)
-                    + " runs will be additionally sampled to form the posterior distribution"
-                )
                 print("#############")
-                self.ui_message(ui,
-                    "#############"
-                )
+
                 self.repetitions = self.iter + runs_after_convergence
                 self.set_repetiton(self.repetitions)
                 # self.iter =self.repetitions - runs_after_convergence
                 convergence = True
 
-        self.final_call(ui)
+        self.final_call()
 
         # try:
         #    self.datawriter.finalize()

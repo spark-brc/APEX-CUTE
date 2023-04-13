@@ -10,10 +10,10 @@ import threading
 import time
 
 import numpy as np
+import sys
 
 # from spotpy import database, parameter
-from ua import database, parameter
-from PyQt5.QtCore import QCoreApplication
+import database, parameter
 
 try:
     from queue import Queue
@@ -36,22 +36,15 @@ class _RunStatistic(object):
     status(rep,like,params)
     """
 
-    def __init__(self, ui, repetitions, algorithm_name, optimization_direction, parnames):
+    def __init__(self, repetitions, algorithm_name, optimization_direction, parnames):
         self.optimization_direction = optimization_direction  # grid, mazimize, minimize
         print(
             "Initializing the ", algorithm_name, " with ", repetitions, " repetitions"
         )
-        self.ui_message(ui,
-            "Initializing the " + algorithm_name + " with " + str(repetitions) + " repetitions"
-        )
-
-
+        sys.stdout.flush()
         if optimization_direction == "minimize":
             self.compare = self.minimizer
             print("The objective function will be minimized")
-            self.ui_message(ui,
-                "The objective function will be minimized"
-            )
 
         if optimization_direction == "maximize":
             self.compare = self.maximizer
@@ -90,7 +83,7 @@ class _RunStatistic(object):
             self.objectivefunction_max = objval
             self.params_max = list(params)
 
-    def __call__(self, ui, objectivefunction, params, block_print=False):
+    def __call__(self, objectivefunction, params, block_print=False):
         self.rep += 1
         if type(objectivefunction) == type([]):  # TODO: change to iterable
             self.compare(objectivefunction[0], params)
@@ -103,9 +96,9 @@ class _RunStatistic(object):
             self.stop = True
 
         if not block_print:
-            self.print_status(ui)
+            self.print_status()
 
-    def print_status(self, ui):
+    def print_status(self):
         # get str showing approximate timeleft to end of simulation in H, M, S
         acttime = time.time()
         # Refresh progressbar every two second
@@ -141,109 +134,48 @@ class _RunStatistic(object):
                     self.objectivefunction_max,
                     timestr,
                 )
-
             print(text)
-            self.ui_message(ui, text)
+            sys.stdout.flush()
             self.last_print = time.time()
 
-    def ui_message(self, ui, messsagein):
-        QCoreApplication.processEvents()
-        ui.messages.append(messsagein)
-        QCoreApplication.processEvents()
-        # ui.raise_()        
 
-
-    def print_status_final(self, ui):
+    def print_status_final(self):
         print("\n*** Final summary ***")
-
-        self.ui_message(ui,
-            "\n*** Final summary ***"
-        )
         print(
             "Total Duration: "
             + str(round((time.time() - self.starttime), 2))
             + " seconds"
         )
-        self.ui_message(ui,
-            "Total Duration: "
-            + str(round((time.time() - self.starttime), 2))
-            + " seconds"
-        )
         print("Total Repetitions:", self.rep)
-        self.ui_message(ui,
-            "Total Repetitions:" + str(self.rep)
-        )
         if self.optimization_direction == "minimize":
             print("Minimal objective value: %g" % (self.objectivefunction_min))
-            self.ui_message(ui,
-                "Minimal objective value: %g" % (self.objectivefunction_min)
-            )
             print("Corresponding parameter setting:")
-            self.ui_message(ui,
-                "Corresponding parameter setting:"
-            )
             for i in range(self.parameters):
                 text = "%s: %g" % (self.parnames[i], self.params_min[i])
                 print(text)
-                self.ui_message(ui,
-                    text
-                )
 
         if self.optimization_direction == "maximize":
             print("Maximal objective value: %g" % (self.objectivefunction_max))
-            self.ui_message(ui,
-                "Maximal objective value: %g" % (self.objectivefunction_max)
-            )
             print("Corresponding parameter setting:")
-            self.ui_message(ui,
-                "Corresponding parameter setting:"
-            )
             for i in range(self.parameters):
                 text = "%s: %g" % (self.parnames[i], self.params_max[i])
                 print(text)
-                self.ui_message(ui,
-                    text
-                )
         if self.optimization_direction == "grid":
             print("Minimal objective value: %g" % (self.objectivefunction_min))
-            self.ui_message(ui,
-                "Minimal objective value: %g" % (self.objectivefunction_min)
-            )
             print("Corresponding parameter setting:")
-            self.ui_message(ui,
-                "Corresponding parameter setting:"
-            )
             for i in range(self.parameters):
                 text = "%s: %g" % (self.parnames[i], self.params_min[i])
                 print(text)
-                self.ui_message(ui,
-                    text
-                )
             print("Maximal objective value: %g" % (self.objectivefunction_max))
-            self.ui_message(ui,
-                "Maximal objective value: %g" % (self.objectivefunction_max)
-            )
             print("Corresponding parameter setting:")
-            self.ui_message(ui,
-                "Corresponding parameter setting:"
-            )
+
             for i in range(self.parameters):
                 text = "%s: %g" % (self.parnames[i], self.params_max[i])
                 print(text)
-                self.ui_message(ui,
-                    text
-                )
         print("******************************\n")
-        self.ui_message(ui,
-            "******************************\n"
-        )
-    def __repr__(self, ui):
-        self.ui_message(ui,
-            "Min objectivefunction: %g \n Max objectivefunction: %g" % (
-            self.objectivefunction_min,
-            self.objectivefunction_max,
-            )
-        )
+
+    def __repr__(self):
+
         return "Min objectivefunction: %g \n Max objectivefunction: %g" % (
             self.objectivefunction_min,
             self.objectivefunction_max,
@@ -374,21 +306,21 @@ class _algorithm(object):
         # A repeater is a convinent wrapper to repeat tasks
         # We have the same interface for sequential and for parallel tasks
         if parallel == "seq":
-            from ua.parallel.sequential import ForEach
+            from parallel.sequential import ForEach
         elif parallel == "mpi":
-            from ua.parallel.mpi import ForEach
+            from parallel.mpi import ForEach
 
         # MPC is based on pathos mutiprocessing and uses ordered map, so results are given back in the order
         # as the parameters are
         elif parallel == "mpc":
-            from ua.parallel.mproc import ForEach
+            from parallel.mproc import ForEach
 
         # UMPC is based on pathos mutiprocessing and uses unordered map, so results are given back in the order
         # as the subprocesses are finished which may speed up the whole simulation process but is not recommended if
         # objective functions do their calculation based on the order of the data because the order of the result is chaotic
         # and randomized
         elif parallel == "umpc":
-            from ua.parallel.umproc import ForEach
+            from parallel.umproc import ForEach
         else:
             raise ValueError(
                 "'%s' is not a valid keyword for parallel processing" % parallel
@@ -421,8 +353,8 @@ class _algorithm(object):
         pars = parameter.get_parameters_array(self.setup)
         return pars[self.non_constant_positions]
 
-    def set_repetiton(self, ui, repetitions):
-        self.status = _RunStatistic(ui,
+    def set_repetiton(self, repetitions):
+        self.status = _RunStatistic(
             repetitions, self.algorithm_name, self.optimization_direction, self.parnames
         )
         # In MPI, this command will do nothing on the master process
@@ -431,13 +363,13 @@ class _algorithm(object):
         # simulate function, new calculation phases and the termination
         self.repeat.start()
 
-    def final_call(self, ui):
+    def final_call(self):
         self.repeat.terminate()
         try:
             self.datawriter.finalize()
         except AttributeError:  # Happens if no database was assigned
             pass
-        self.status.print_status_final(ui)
+        self.status.print_status_final()
 
     def _init_database(self, like, randompar, simulations):
         if self.dbinit:
@@ -529,7 +461,6 @@ class _algorithm(object):
 
     def postprocessing(
         self,
-        ui,
         rep,
         params,
         simulation,
@@ -548,7 +479,7 @@ class _algorithm(object):
         # This is needed as some algorithms just want to know the fitness,
         # before they actually save the run in a database (e.g. sce-ua)
 
-        self.status(ui, like, params, block_print=block_print)
+        self.status(like, params, block_print=block_print)
         if save_run is True and simulation is not None:
             self.save(like, params, simulations=simulation, chains=chains)
         if self._return_all_likes:

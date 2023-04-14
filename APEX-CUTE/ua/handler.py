@@ -16,7 +16,7 @@ from PyQt5.QtCore import QCoreApplication
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QFont
 import subprocess
-from ua import read_output
+from ua import read_output, analyzer
 import datetime
 import csv
 
@@ -227,7 +227,9 @@ class uaInit(object):
 
     def create_ua_sim_obd(self, ui):
         os.chdir(os.path.join(self.main_dir, self.mod))
-        read_output.create_ua_sim_obd(self.read_ua_conf())
+        df = read_output.create_ua_sim_obd(self.read_ua_conf())
+        analyzer.plot_one_one(df)
+
         os.chdir(self.main_dir)
 
 

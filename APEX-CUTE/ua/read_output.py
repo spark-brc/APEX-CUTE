@@ -31,6 +31,7 @@ def create_ua_sim_obd(uadf):
     # combine
     com_so_df = sim_df.merge(obs_df, how='inner', on='type_time')
     com_so_df.to_csv("sim_obd.csv", index=False, float_format='%.7e')
+    return com_so_df
 
 def load_obs(obs_file, obs_ts, rch_num, obs_type):
 

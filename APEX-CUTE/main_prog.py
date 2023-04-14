@@ -2987,6 +2987,7 @@ def UA_activate():
     ua_proj.initial_run(ui)
     ua_proj.create_ua_config(ui)
     ua_proj.create_ua_sim_obd(ui)
+    
     print(os.getcwd())
     
     # os.chdir(os.path.abspath(__file__))

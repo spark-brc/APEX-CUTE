@@ -2982,8 +2982,11 @@ def UA_activate():
     ua_proj.ua_worktree_setup()
     ua_proj.export_parm_pars(ui)
     ua_proj.all_pars(ui)
-    # os.chdir(apex_cute_path)
+    ua_proj.copy_obs_file_uadir()
     ua_proj.print_ua_intro(ui)
+    ua_proj.initial_run(ui)
+    ua_proj.create_ua_config(ui)
+    ua_proj.create_ua_sim_obd(ui)
     print(os.getcwd())
     
     # os.chdir(os.path.abspath(__file__))

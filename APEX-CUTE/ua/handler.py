@@ -18,6 +18,7 @@ from PyQt5.QtGui import QFont
 import subprocess
 from ua import read_output
 import datetime
+import csv
 
 
 us_log_path = os.path.dirname(os.path.abspath( __file__ ))
@@ -40,6 +41,8 @@ class uaInit(object):
             self.mod = "SCEUA"
 
         # NOTE: read all ui setting here then use as initiates
+        self.cali_stdate = ui.txt_calibration_start_date.text()
+        self.cali_eddate = ui.txt_calibration_end_date.text()
         if ui.rb_user_obs_day.isChecked():
             self.time_step = "day"
         if ui.rb_user_obs_mon.isChecked():
@@ -50,6 +53,14 @@ class uaInit(object):
         if ui.txt_apex_out_1.currentText().upper()=="RCH-FLOW":
             self.obs_nam = "Flow(m3/s)"
         self.obs_path = ui.txt_user_obs_save_path.toPlainText()
+        self.obs_num = ui.txt_user_obs_subnum.text()
+
+
+    def copy_obs_file_uadir(self):
+        if self.time_step == "month":
+            ts = "monthly"
+        obs_file_nam = f"{self.obs_type}_{ts}{self.obs_num}.csv"
+        shutil.copy2(os.path.join(self.obs_path, obs_file_nam), os.path.join(self.main_dir))
 
 
     def ua_worktree_setup(self):
@@ -90,7 +101,7 @@ class uaInit(object):
                 }
                 )
         sel_parm_pars = parm_pars.loc[parm_pars['select'] == str(1)]
-        sel_parm_pars["type"] = "parm"
+        sel_parm_pars.loc[:, "type"] = "parm"
         return sel_parm_pars
 
     def export_other_pars(self, ui):
@@ -140,13 +151,14 @@ class uaInit(object):
     def print_ua_intro(self, ui):
         font = QFont("Consolas")
         ui.messages.setFont(font)
+        ui.messages.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         infos = self.ua_set_info(ui)
         with open(os.path.join(us_log_path, 'ua_log.log'), "r", encoding="utf8") as f:
             count = 0
             for i, line in enumerate(f.readlines()):
                 # font = QFont("monospace")
                 # ui.messages.setFont(font)
-                if i > 11 and count < 5:
+                if i > 10 and count < 12:
                     ui.messages.insertPlainText(
                         line.replace('\n', ' ') + 
                         f" | {list(infos.keys())[count]}:" + 
@@ -158,15 +170,22 @@ class uaInit(object):
                 # ui.messages.moveCursor(QtGui.QTextCursor.End)
                 print(line,  end='')
                 time.sleep(0.2)
-                QCoreApplication.processEvents()
                 ui.messages.moveCursor(QtGui.QTextCursor.End)
+                QCoreApplication.processEvents()
 
     def ua_set_info(self, ui):
         infos = {
+            "WD": self.main_dir,
             "Mode":self.mod,
             "Likelihood": ui.comboBox_likelihoods.currentText(),
-            "Number of Chains": ui.spinBox_nchains.value(),
-            "Number of Runs": ui.lineEdit_Runs.text(),
+            "NumberChains": ui.spinBox_nchains.value(),
+            "NumberRuns": ui.lineEdit_Runs.text(),
+            "CalibrationStartDate": self.cali_stdate,
+            "CalibrationEndDate": self.cali_eddate,
+            "ObservationFile": self.obs_type,
+            "ObservationType": self.obs_nam,
+            "ReachIDs": self.obs_num,
+            "TimeStepObs": self.time_step,
             "Version": "0.0.0"
         }
         return infos
@@ -179,31 +198,49 @@ class uaInit(object):
                             f"We are going to check on initial test run.\n Click Yes to proceed.",
                             qBox.Yes, qBox.No)
         if reply == qBox.Yes:
+            ui.messages.append('Initial run start...')
+            QCoreApplication.processEvents()
             mod = self.mod
             os.chdir(os.path.join(os.path.join(self.main_dir, mod)))
             comline = "APEX1501.exe"
             run_model = subprocess.Popen(comline, cwd=".")
             # run_model = subprocess.Popen(comline, cwd=".")
             run_model.wait()
+            ui.messages.append('...complete!')
+            QCoreApplication.processEvents()
 
+    def create_ua_config(self, ui):
+        with open(os.path.join(self.main_dir, 'ua_conf.cfg'),'w', newline="") as f:
+            w = csv.writer(f)
+            w.writerows(self.ua_set_info(ui).items())
+        ui.messages.append("'ua_conf.csv' file was created ..." ) 
+        QCoreApplication.processEvents()
+    # def check_obs_file(self, ui):
+
+    def read_ua_conf(self):
+        mod = self.mod
+        self.uaconf_df = pd.read_csv(
+            os.path.join(self.main_dir, "ua_conf.cfg"),
+            names=["idx", "val"],
+            index_col=0, header=None)        
+        return self.uaconf_df
 
     def create_ua_sim_obd(self, ui):
-        # read rch
-        read_output.extract_day_stf
+        os.chdir(os.path.join(self.main_dir, self.mod))
+        read_output.create_ua_sim_obd(self.read_ua_conf())
+        os.chdir(self.main_dir)
 
-    # def print_ua_intro(self, ui):
-    #     with open(os.path.join(self.main_dir, 'ua_log.log'), "r", encoding="utf8") as f:
-    #         for line in f.readlines():
-    #             # font = QFont('Source Sans Pro', 10, QFont.Bold)
-    #             # font.setLetterSpacing(QFont.PercentageSpacing, 100)
-    #             # font.setPixelSize(fontsize)
 
-    #             # ui.messages.insertPlainText(line)
-    #             # print(line,  end='')
-    #             # time.sleep(0.5)
-    #             # QCoreApplication.processEvents()
-    #             font = QFont("monospace")
-    #             ui.messages.setFont(font)
+    # def create_ua_sim_obd(self, ui):
+    #     uaconf_df = self.read_ua_conf()
+    #     # read rch
+    #     sim_df = read_output.extract_day_stf(
+    #         uaconf_df.loc["ReachIDs", "val"],
+    #         uaconf_df.loc["CalibrationStartDate", "val"],
+    #         uaconf_df.loc["CalibrationEndDate", "val"],
+    #     )
+    #     print(sim_df)
+
 
 
 

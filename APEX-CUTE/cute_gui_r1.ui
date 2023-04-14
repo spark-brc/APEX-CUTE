@@ -14280,6 +14280,9 @@ In calibration, any APEX result that does not meet the constraints is discarded 
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_mcmc">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>MCMC</string>
                 </property>
@@ -14290,6 +14293,9 @@ In calibration, any APEX result that does not meet the constraints is discarded 
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_sceua">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>SCEUA</string>
                 </property>

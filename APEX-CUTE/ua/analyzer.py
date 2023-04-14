@@ -9,7 +9,7 @@ import matplotlib.patches as mpatches
 # from statistics import mean
 
 def plot_one_one(df, numcols=1, fsize=8, ):
-    fig, ax = plt.subplots(figsize=(6,5))
+    fig1, ax = plt.subplots(figsize=(6,5))
     colors = cm.tab20(np.linspace(0, 1, len(df["type"].unique())))
     fmax = df.loc[:, ["sim", "obd"]].max().max()
     fmin = df.loc[:, ["sim", "obd"]].min().min()
@@ -47,14 +47,14 @@ def plot_one_one(df, numcols=1, fsize=8, ):
     ax.plot([fmin, fmax], [fmin, fmax], 'k--', alpha=0.2)
     ax.set_xlabel("Simulated")
     ax.set_ylabel("Observed")
-    plt.legend(
+    fig1.legend(
         lgds, 
         bbox_to_anchor=(1.05, 1.05), 
         # ncols=numcols, 
         fontsize=fsize)
     # fig.tight_layout()
-    plt.savefig("plot_oneToOne.jpg", dpi=300, bbox_inches="tight")
-    plt.show()
+    fig1.savefig("plot_oneToOne.jpg", dpi=300, bbox_inches="tight")
+    fig1.show()
 
 
 def plot_senstivity_KDE(sa_df, num_sen_pars=10, fontsize=10, sen_type='ST', fig_name="sens_KDE.jpg", legend=True):

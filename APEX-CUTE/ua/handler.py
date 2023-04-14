@@ -213,7 +213,7 @@ class uaInit(object):
         with open(os.path.join(self.main_dir, 'ua_conf.cfg'),'w', newline="") as f:
             w = csv.writer(f)
             w.writerows(self.ua_set_info(ui).items())
-        ui.messages.append("'ua_conf.csv' file was created ..." ) 
+        ui.messages.append("'ua_conf.cfg' file was created ..." ) 
         QCoreApplication.processEvents()
     # def check_obs_file(self, ui):
 

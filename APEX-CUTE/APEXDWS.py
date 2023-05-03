@@ -14,7 +14,7 @@ def DWSread():
     
     fnam = parm.path_TxtWork + '/' + parm.APEXRun_name + '.DWS'
     try:
-        dws_data = np.genfromtxt(fnam,delimiter='',skip_header=9) #dws_data[row,column]
+        dws_data = np.genfromtxt(fnam,delimiter='',skip_header=9, usecols=range(0,9)) #dws_data[row,column]
     except:
         #Print error message and exit
         parm.error_msg = fnam + ' is not found.'

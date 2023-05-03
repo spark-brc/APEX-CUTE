@@ -16,11 +16,11 @@ def SADread():
     
     fnam = parm.path_TxtWork + '\\' + parm.APEXRun_name + '.SAD'
     try:
-        SAD_data = np.genfromtxt(fnam,delimiter='', skip_header=10) #SAD_data[row,column]
-        SAD_str = np.genfromtxt(fnam,delimiter='',dtype = 'str', skip_header=10) #SAD_data[row,column]
+        SAD_data = np.genfromtxt(fnam,delimiter='', skip_header=10, usecols=range(0,40)) #SAD_data[row,column]
+        SAD_str = np.genfromtxt(fnam,delimiter='',dtype = 'str', skip_header=10, usecols=range(0,40)) #SAD_data[row,column]
     except:
         #Print error message and exit
-        parm.error_msg = fnam + ' is not found.'
+        parm.error_msg = 'Reading ' + fnam + ' is failed.'
         msgbox.msg("Error", parm.error_msg)
         parm.iflg=1; return
 

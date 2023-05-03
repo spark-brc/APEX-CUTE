@@ -1,5 +1,4 @@
 ﻿import sys, parm, os, subprocess, datetime, math 
-from numpy import genfromtxt
 import msgbox
 
 def run():

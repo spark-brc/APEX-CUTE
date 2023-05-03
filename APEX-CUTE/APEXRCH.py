@@ -1,5 +1,4 @@
 ﻿import parm
-from numpy import genfromtxt
 import msgbox
 import main_prog
 

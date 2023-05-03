@@ -4,6 +4,6 @@ The Agricultural Policy Environmental eXtender - auto-Calibration and UncerTaint
 
 
 This repository contains source codes and an executable for APEX-CUTE.
-- __[Installer](https://github.com/spark-brc/APEX-CUTE/releases/download/v7.8.1/APEX-CUTE_7r8_winamd64_APEX1501.exe):__ APEX-CUTE 7.8
-- **[Source Code](https://github.com/spark-brc/APEX-CUTE/archive/refs/tags/v7.8.1.zip)**
+- __[Installer](https://github.com/spark-brc/APEX-CUTE/releases/download/v7.8.2/APEX-CUTE_7r8_winamd64_APEX1501.exe):__ APEX-CUTE 7.8
+- **[Source Code](https://github.com/spark-brc/APEX-CUTE/archive/refs/tags/v7.8.2.zip)**
 
